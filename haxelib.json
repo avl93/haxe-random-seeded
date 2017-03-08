@@ -1,0 +1,10 @@
+{
+  "name": "random-seeded",
+  "license": "MIT",
+  "classPath": "src/",
+  "tags": [],
+  "description": "Seeded random",
+  "contributors": ["avl"],
+  "releasenote": "",
+  "version": "1.0"
+}
