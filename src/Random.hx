@@ -1,7 +1,6 @@
 package ;
 
-import flash.errors.ArgumentError;
-import flash.utils.ByteArray;
+import haxe.io.Bytes;
 
 // Source: http://www.kirupa.com/forum/showthread.php?365564-AS3-Seeded-Pseudo-Random-Number-Generator
 // Converted to Haxe with as3hx
@@ -102,7 +101,7 @@ class Random
 	{
 		if (maxValue < 0)
 		{
-			throw new ArgumentError("Argument \"maxValue\" must be positive.");
+			throw "Argument \"maxValue\" must be positive.";
 		}
 		return Std.int(this.sample() * maxValue);
 	}
@@ -111,7 +110,7 @@ class Random
 	{
 		if (minValue > maxValue)
 		{
-			throw new ArgumentError("Argument \"minValue\" must be less than or equal to \"maxValue\".");
+			throw "Argument \"minValue\" must be less than or equal to \"maxValue\".";
 		}
 		var num : Float = maxValue - minValue;
 		if (num <= 0x7fffffff)
@@ -121,15 +120,15 @@ class Random
 		return Std.int((Std.int((this.getSampleForLargeRange() * num))) + minValue);
 	}
 
-	public function nextBytes(buffer : ByteArray, length : Int) : Void
+	public function nextBytes(buffer : Bytes, length : Int) : Void
 	{
 		if (buffer == null)
 		{
-			throw new ArgumentError("Argument \"buffer\" cannot be null.");
+			throw "Argument \"buffer\" cannot be null.";
 		}
 		for (i in 0...length)
 		{
-			buffer.writeByte(this.internalSample() % 0x100);
+			buffer.set(i, this.internalSample() % 0x100);
 		}
 	}
 
